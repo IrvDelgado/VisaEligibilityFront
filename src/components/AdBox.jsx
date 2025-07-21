@@ -1,7 +1,8 @@
-export default function AdBox() {
+export default function AdBox({ position }) {
   return (
-    <div className="bg-yellow-50 border border-yellow-300 rounded p-4 text-center text-yellow-800 shadow-sm">
-      <p className="text-sm">[Anuncio] Aquí podría ir una publicidad de Google AdSense o similar</p>
+    <div className="bg-yellow-100 p-4 rounded-md text-center text-yellow-900 border border-yellow-300 mb-6">
+      <p>Anuncio {position}</p>
+      {/* Aquí iría el script / iframe real de Google Ads */}
     </div>
   )
 }

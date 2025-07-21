@@ -25,11 +25,9 @@ a:hover {
 }
 
 body {
+  @apply bg-white text-gray-900 font-sans min-h-screen;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
 }
 
 h1 {

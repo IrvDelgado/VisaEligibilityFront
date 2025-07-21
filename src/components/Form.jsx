@@ -1,86 +1,227 @@
-import { useState } from "react"
-
-const defaultData = {
-  personalInfo: {
-    nationality: "MX",
-    age: 28,
-    degreeLevel: "bachelor",
-    englishProficiency: 85,
-    financialProof: 80,
-    academicRecord: 75,
-    tiesHomeCountry: 60,
-  },
-  employment: {
-    jobTitle: "engineer",
-    hasJobOffer: true,
-    occupationType: "specialty",
-    salary: 50000,
-  },
-}
+import { useState } from 'react'
 
 export default function Form({ onSubmit, loading }) {
-  const [formData, setFormData] = useState(defaultData)
+  // Estados locales para cada campo
+  const [personalInfo, setPersonalInfo] = useState({
+    nationality: 'MX',
+    age: '',
+    degreeLevel: '',
+    englishProficiency: '',
+    financialProof: '',
+    academicRecord: '',
+    tiesHomeCountry: '',
+  })
 
-  const handleChange = (section, key, value) => {
-    setFormData((prev) => ({
+  const [employment, setEmployment] = useState({
+    jobTitle: '',
+    hasJobOffer: false,
+    occupationType: '',
+    salary: '',
+  })
+
+  const handlePersonalChange = (e) => {
+    const { name, value } = e.target
+    setPersonalInfo(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleEmploymentChange = (e) => {
+    const { name, value, type, checked } = e.target
+    setEmployment(prev => ({
       ...prev,
-      [section]: {
-        ...prev[section],
-        [key]: value,
-      },
+      [name]: type === 'checkbox' ? checked : value,
     }))
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    // Validación básica (ejemplo)
+    if (!personalInfo.nationality) {
+      alert('Debes ingresar nacionalidad')
+      return
+    }
+    if (!personalInfo.age) {
+      alert('Debes ingresar edad')
+      return
+    }
+
+    // Enviar los datos a App.jsx
+    onSubmit({ personalInfo, employment })
+  }
+
   return (
-    <form onSubmit={(e) => { e.preventDefault(); onSubmit(formData); }} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <section className="space-y-3">
-        <h2 className="font-semibold text-lg text-gray-700">Información Personal</h2>
-        {Object.entries(formData.personalInfo).map(([key, value]) => (
-          <div key={key}>
-            <label className="block text-sm font-medium capitalize">{key}</label>
-            <input
-              className="w-full border border-gray-300 rounded px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500"
-              type={typeof value === "number" ? "number" : "text"}
-              value={value}
-              onChange={(e) => handleChange("personalInfo", key, typeof value === "number" ? +e.target.value : e.target.value)}
-            />
-          </div>
-        ))}
-      </section>
-
-      <section className="space-y-3">
-        <h2 className="font-semibold text-lg text-gray-700">Empleo</h2>
-        {Object.entries(formData.employment).map(([key, value]) => (
-          <div key={key}>
-            <label className="block text-sm font-medium capitalize">{key}</label>
-            {typeof value === "boolean" ? (
-              <input
-                type="checkbox"
-                className="mt-2"
-                checked={value}
-                onChange={(e) => handleChange("employment", key, e.target.checked)}
-              />
-            ) : (
-              <input
-                className="w-full border border-gray-300 rounded px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500"
-                type={typeof value === "number" ? "number" : "text"}
-                value={value}
-                onChange={(e) => handleChange("employment", key, typeof value === "number" ? +e.target.value : e.target.value)}
-              />
-            )}
-          </div>
-        ))}
-      </section>
-
-      <div className="md:col-span-2">
-        <button
-          type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded transition"
-          disabled={loading}
-        >
-          {loading ? "Consultando..." : "Consultar elegibilidad"}
-        </button>
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div>
+        <label className="block font-semibold mb-1" htmlFor="nationality">Nacionalidad</label>
+        <input
+          id="nationality"
+          name="nationality"
+          type="text"
+          value={personalInfo.nationality}
+          onChange={handlePersonalChange}
+          className="w-full border border-gray-300 rounded p-2"
+          disabled
+        />
       </div>
+
+      <div>
+        <label className="block font-semibold mb-1" htmlFor="age">Edad</label>
+        <input
+          id="age"
+          name="age"
+          type="number"
+          value={personalInfo.age}
+          onChange={handlePersonalChange}
+          className="w-full border border-gray-300 rounded p-2"
+          required
+          min={0}
+          max={120}
+        />
+      </div>
+
+      <div>
+        <label className="block font-semibold mb-1" htmlFor="degreeLevel">Nivel de estudio</label>
+        <select
+          id="degreeLevel"
+          name="degreeLevel"
+          value={personalInfo.degreeLevel}
+          onChange={handlePersonalChange}
+          className="w-full border border-gray-300 rounded p-2"
+          required
+        >
+          <option value="">Selecciona</option>
+          <option value="highschool">Preparatoria</option>
+          <option value="bachelor">Licenciatura</option>
+          <option value="master">Maestría</option>
+          <option value="doctorate">Doctorado</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block font-semibold mb-1" htmlFor="englishProficiency">Inglés (%)</label>
+        <input
+          id="englishProficiency"
+          name="englishProficiency"
+          type="number"
+          value={personalInfo.englishProficiency}
+          onChange={handlePersonalChange}
+          className="w-full border border-gray-300 rounded p-2"
+          min={0}
+          max={100}
+          required
+        />
+      </div>
+
+      <div>
+        <label className="block font-semibold mb-1" htmlFor="financialProof">Prueba financiera (%)</label>
+        <input
+          id="financialProof"
+          name="financialProof"
+          type="number"
+          value={personalInfo.financialProof}
+          onChange={handlePersonalChange}
+          className="w-full border border-gray-300 rounded p-2"
+          min={0}
+          max={100}
+          required
+        />
+      </div>
+
+      <div>
+        <label className="block font-semibold mb-1" htmlFor="academicRecord">Historial académico (%)</label>
+        <input
+          id="academicRecord"
+          name="academicRecord"
+          type="number"
+          value={personalInfo.academicRecord}
+          onChange={handlePersonalChange}
+          className="w-full border border-gray-300 rounded p-2"
+          min={0}
+          max={100}
+          required
+        />
+      </div>
+
+      <div>
+        <label className="block font-semibold mb-1" htmlFor="tiesHomeCountry">Lazos con país de origen (%)</label>
+        <input
+          id="tiesHomeCountry"
+          name="tiesHomeCountry"
+          type="number"
+          value={personalInfo.tiesHomeCountry}
+          onChange={handlePersonalChange}
+          className="w-full border border-gray-300 rounded p-2"
+          min={0}
+          max={100}
+          required
+        />
+      </div>
+
+      <hr className="my-4" />
+
+      <div>
+        <label className="block font-semibold mb-1" htmlFor="jobTitle">Puesto de trabajo</label>
+        <input
+          id="jobTitle"
+          name="jobTitle"
+          type="text"
+          value={employment.jobTitle}
+          onChange={handleEmploymentChange}
+          className="w-full border border-gray-300 rounded p-2"
+          required
+        />
+      </div>
+
+      <div className="flex items-center space-x-2">
+        <input
+          id="hasJobOffer"
+          name="hasJobOffer"
+          type="checkbox"
+          checked={employment.hasJobOffer}
+          onChange={handleEmploymentChange}
+          className="w-4 h-4"
+        />
+        <label htmlFor="hasJobOffer" className="font-semibold">¿Tienes oferta laboral?</label>
+      </div>
+
+      <div>
+        <label className="block font-semibold mb-1" htmlFor="occupationType">Tipo de ocupación</label>
+        <select
+          id="occupationType"
+          name="occupationType"
+          value={employment.occupationType}
+          onChange={handleEmploymentChange}
+          className="w-full border border-gray-300 rounded p-2"
+          required
+        >
+          <option value="">Selecciona</option>
+          <option value="specialty">Especialidad</option>
+          <option value="general">General</option>
+          <option value="technical">Técnico</option>
+        </select>
+      </div>
+
+      <div>
+        <label className="block font-semibold mb-1" htmlFor="salary">Salario</label>
+        <input
+          id="salary"
+          name="salary"
+          type="number"
+          value={employment.salary}
+          onChange={handleEmploymentChange}
+          className="w-full border border-gray-300 rounded p-2"
+          min={0}
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="bg-blue-600 text-white font-bold px-6 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+      >
+        {loading ? 'Consultando...' : 'Consultar elegibilidad'}
+      </button>
     </form>
   )
 }
