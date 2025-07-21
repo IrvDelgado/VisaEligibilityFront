@@ -214,7 +214,8 @@ export default function Form({ onSubmit, loading }) {
           required
         />
       </div>
-
+    
+    <div className="flex justify-center mt-6">
       <button
         type="submit"
         disabled={loading}
@@ -222,6 +223,7 @@ export default function Form({ onSubmit, loading }) {
       >
         {loading ? 'Consultando...' : 'Consultar elegibilidad'}
       </button>
+      </div>
     </form>
   )
 }

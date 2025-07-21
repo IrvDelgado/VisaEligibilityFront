@@ -1,8 +1,21 @@
 import axios from 'axios'
 
-const API_BASE_URL = 'https://api.pronostika.top/api/v1' // actualiza si cambia
+const API_BASE_URL = 'https://api.pronostika.top/api/v1' 
+const Local_API_BASE_URL = 'http://localhost:3000/api/v1' // Local development URL
+
+// API Key para autenticación
+const API_KEY = 'visa-checker-dev-key-2024-secure'
+
+// Configurar headers por defecto con la API key
+const apiClient = axios.create({
+  headers: {
+    'X-API-Key': API_KEY,
+    'Content-Type': 'application/json'
+  }
+})
 
 export async function checkEligibility(data) {
-  const res = await axios.post(`${API_BASE_URL}/visa/eligibility`, data)
+  // Use the local API base URL if running in development mode
+  const res = await apiClient.post(`${Local_API_BASE_URL}/visa/eligibility`, data)
   return res.data
 }
