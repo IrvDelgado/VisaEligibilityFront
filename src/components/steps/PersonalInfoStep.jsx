@@ -4,10 +4,6 @@ import Tooltip from '../Tooltip'
 export default function PersonalInfoStep() {
   const { register, formState: { errors } } = useFormContext()
 
-  const countries = [
-    { code: 'US', name: 'Estados Unidos' },
-  ]
-
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -95,55 +91,47 @@ export default function PersonalInfoStep() {
         <p className="mt-1 text-sm text-gray-600">Entre 16 y 75 años</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="flex items-center gap-2 font-semibold mb-2" htmlFor="visitDuration">
-            Duración de Visita (días)
-            <Tooltip content="¿Por cuántos días planeas estar en Estados Unidos?">
-              <svg className="w-4 h-4 text-gray-400 cursor-help" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
-              </svg>
-            </Tooltip>
-          </label>
+      <div>
+        <label className="flex items-center gap-2 font-semibold mb-2" htmlFor="visitDuration">
+          Duración de Visita (días)
+          <Tooltip content="¿Por cuántos días planeas estar en Estados Unidos?">
+            <svg className="w-4 h-4 text-gray-400 cursor-help" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+            </svg>
+          </Tooltip>
+        </label>
+        <input
+          id="visitDuration"
+          type="number"
+          {...register('personalInfo.visitDuration', { valueAsNumber: true })}
+          className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+          placeholder="Ej: 90"
+          min="1"
+          max="365"
+        />
+        {errors?.personalInfo?.visitDuration && (
+          <p className="mt-1 text-sm text-red-600">{errors.personalInfo.visitDuration.message}</p>
+        )}
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label className="inline-flex items-start gap-2 text-sm text-gray-700">
           <input
-            id="visitDuration"
-            type="number"
-            {...register('personalInfo.visitDuration', { valueAsNumber: true })}
-            className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-            placeholder="Ej: 90"
-            min="1"
-            max="365"
+            type="checkbox"
+            {...register('personalInfo.priorUSExperience')}
+            className="w-4 h-4 mt-1 text-emerald-600 bg-white border-gray-300 rounded focus:ring-emerald-500"
           />
-          {errors?.personalInfo?.visitDuration && (
-            <p className="mt-1 text-sm text-red-600">{errors.personalInfo.visitDuration.message}</p>
-          )}
-        </div>
+          <span>He visitado Estados Unidos antes</span>
+        </label>
 
-        <div className="space-y-3">
-          <div className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              id="priorUSExperience"
-              {...register('personalInfo.priorUSExperience')}
-              className="w-4 h-4 text-emerald-600 bg-white border-gray-300 rounded focus:ring-emerald-500"
-            />
-            <label htmlFor="priorUSExperience" className="text-gray-700 text-sm">
-              He visitado Estados Unidos antes
-            </label>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              id="previousVisaRecord"
-              {...register('personalInfo.previousVisaRecord')}
-              className="w-4 h-4 text-emerald-600 bg-white border-gray-300 rounded focus:ring-emerald-500"
-            />
-            <label htmlFor="previousVisaRecord" className="text-gray-700 text-sm">
-              He tenido visas estadounidenses anteriormente
-            </label>
-          </div>
-        </div>
+        <label className="inline-flex items-start gap-2 text-sm text-gray-700">
+          <input
+            type="checkbox"
+            {...register('personalInfo.previousVisaRecord')}
+            className="w-4 h-4 mt-1 text-emerald-600 bg-white border-gray-300 rounded focus:ring-emerald-500"
+          />
+          <span>He tenido visas estadounidenses anteriormente</span>
+        </label>
       </div>
 
       <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
