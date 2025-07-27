@@ -44,44 +44,44 @@ export default function Home() {
       setResult(res)
     } catch (err) {
       console.error('🚨 API Error:', err)
-      console.error('🚨 Full error details:', {
-        status: err.response?.status,
-        statusText: err.response?.statusText,
-        data: err.response?.data,
-        url: err.config?.url,
-        method: err.config?.method
-      })
-      
-      if (err.response?.data?.errors) {
-        console.error('🚨 Specific API errors:', err.response.data.errors)
-      }
-      
+
       let errorMessage = 'Error desconocido al consultar el API'
-      
-      if (err.response?.status === 400) {
-        let baseMessage = err.response?.data?.message || 'Los datos enviados no son correctos'
-        
-        // If there are specific field errors, include them
-        if (err.response?.data?.errors && Array.isArray(err.response.data.errors)) {
-          const specificErrors = err.response.data.errors.map(error => 
-            typeof error === 'string' ? error : error.message || JSON.stringify(error)
-          ).join(', ')
-          baseMessage += ` Detalles: ${specificErrors}`
+
+      if (err.response) {
+        const status = err.response.status
+        const apiMsg = err.response?.data?.message
+
+        if (status === 400) {
+          errorMessage = `❌ Datos inválidos: ${apiMsg || 'Verifica tu información'}`
+
+          if (err.response.data?.errors?.length) {
+            const specific = err.response.data.errors
+              .map(e => e.message || JSON.stringify(e))
+              .join(', ')
+            errorMessage += ` — Detalles: ${specific}`
+          }
+
+        } else if (status === 404) {
+          errorMessage = '🚫 Servicio no encontrado. Intenta más tarde.'
+
+        } else if (status === 500) {
+          errorMessage = `💥 Error interno del servidor. ${apiMsg || ''}`
+
+        } else {
+          errorMessage = `⚠️ Error ${status}: ${apiMsg || 'Consulta fallida'}`
         }
-        
-        errorMessage = `Datos inválidos (Error 400): ${baseMessage}`
-      } else if (err.response?.status === 500) {
-        errorMessage = `Error del servidor (Error 500): ${err.response?.data?.message || 'Problema interno del servidor'}`
-      } else if (err.response?.status === 404) {
-        errorMessage = `Servicio no encontrado (Error 404): El endpoint no existe`
-      } else if (err.response?.data?.message) {
-        errorMessage = `Error ${err.response.status}: ${err.response.data.message}`
-      } else if (err.message) {
-        errorMessage = `Error de conexión: ${err.message}`
-      }
+
+      } else if (err.request) {
+        // No hubo respuesta: red caída, timeout, CORS, etc.
+        errorMessage = '⏱️ El servidor no respondió. Verifica tu conexión o intenta más tarde.'
       
+      } else {
+        // Error al configurar axios, o algo raro
+        errorMessage = `❓ Error inesperado: ${err.message}`
+      }
+
       setError(errorMessage)
-    } finally {
+    }finally {
       setLoading(false)
     }
   }
@@ -198,9 +198,23 @@ export default function Home() {
           <div className="w-full">
             <AdBox position="Pre-Form Banner" />
           </div>
+        {!result ? (
+          <>
+            {error && (
+              <div className="mt-4 p-4 bg-red-50 border border-red-300 text-red-700 rounded-xl shadow text-sm text-center max-w-xl mx-auto">
+                <strong className="block text-red-800 mb-2">¡Error!</strong>
+                <p>{error}</p>
+                <button
+                  onClick={() => setError(null)}
+                  className="mt-3 text-sm text-red-600 underline hover:text-red-800"
+                >
+                  Ocultar
+                </button>
+              </div>
+            )}
 
-          {!result ? (
             <FormWizard onSubmit={handleSubmit} loading={loading} />
+          </>
           ) : (
             <div className="bg-white p-6 rounded-lg shadow-lg">
               {loading && <LoadingSpinner />}
