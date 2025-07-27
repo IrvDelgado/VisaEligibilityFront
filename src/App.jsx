@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Privacidad from './components/Privacidad'
 import Terminos from './components/Terminos'
+import TiposDeVisas from './components/TiposDeVisas'
+import DocumentacionRecomendada from './components/DocumentacionRecomendada'
+import ConsejosEntrevista from './components/ConsejosEntrevista'
 
 export default function App() {
   const [accepted, setAccepted] = useState(() => {
@@ -22,6 +25,9 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/privacidad" element={<Privacidad />} />
           <Route path="/terminos" element={<Terminos />} />
+          <Route path="/tipos-de-visas" element={<TiposDeVisas />} />
+          <Route path="/documentacion-recomendada" element={<DocumentacionRecomendada />} />
+          <Route path="/consejos-entrevista" element={<ConsejosEntrevista />} />
         </Routes>
       </Router>
 
