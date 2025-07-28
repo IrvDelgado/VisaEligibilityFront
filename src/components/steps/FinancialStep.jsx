@@ -95,17 +95,26 @@ export default function FinancialStep() {
             </svg>
           </Tooltip>
         </label>
-        <div className="flex items-center gap-3 mb-3">
-          <input
-            type="checkbox"
-            id="hasSponsorship"
-            {...register('financial.hasSponsorship')}
-            className="w-4 h-4 text-emerald-600 bg-white border-gray-300 rounded focus:ring-emerald-500"
-          />
-          <label htmlFor="hasSponsorship" className="text-gray-700">
-            Tengo patrocinio financiero
-          </label>
-        </div>
+
+<div className="flex items-center gap-3 mb-3">
+  <label
+    htmlFor="hasSponsorship"
+    className="flex items-center cursor-pointer gap-3"
+  >
+    <div className="relative">
+      <input
+        type="checkbox"
+        id="hasSponsorship"
+        {...register('financial.hasSponsorship')}
+        className="sr-only peer"
+      />
+      <div className="w-10 h-5 bg-gray-300 rounded-full peer-checked:bg-emerald-500 transition-all duration-300"></div>
+      <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-md transform peer-checked:translate-x-5 transition-all duration-300"></div>
+    </div>
+    <span className="text-gray-700 text-sm">Tengo patrocinio financiero</span>
+  </label>
+</div>
+
 
         {hasSponsorship && (
           <div>
@@ -134,43 +143,56 @@ export default function FinancialStep() {
           Los oficiales de visa evalúan si tienes razones para regresar a tu país
         </p>
 
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <input
-              type="checkbox"
-              id="hasProperty"
-              {...register('financial.hasProperty')}
-              className="w-4 h-4 text-emerald-600 bg-white border-gray-300 rounded focus:ring-emerald-500"
-            />
-            <label htmlFor="hasProperty" className="text-gray-700">
-              Tengo propiedades (casa, terreno, negocio) en mi país
-            </label>
-          </div>
+<div className="space-y-4">
+  <label htmlFor="hasProperty" className="flex items-center cursor-pointer gap-3">
+    <div className="relative">
+      <input
+        type="checkbox"
+        id="hasProperty"
+        {...register('financial.hasProperty')}
+        className="sr-only peer"
+      />
+      <div className="w-10 h-5 bg-gray-300 rounded-full peer-checked:bg-emerald-500 transition-all duration-300"></div>
+      <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-md transform peer-checked:translate-x-5 transition-all duration-300"></div>
+    </div>
+    <span className="text-gray-700 text-sm">
+      Tengo propiedades (casa, terreno, negocio) en mi país
+    </span>
+  </label>
 
-          <div className="flex items-center gap-3">
-            <input
-              type="checkbox"
-              id="hasFamily"
-              {...register('financial.hasFamily')}
-              className="w-4 h-4 text-emerald-600 bg-white border-gray-300 rounded focus:ring-emerald-500"
-            />
-            <label htmlFor="hasFamily" className="text-gray-700">
-              Tengo familia directa (padres, cónyuge, hijos) en mi país
-            </label>
-          </div>
+  <label htmlFor="hasFamily" className="flex items-center cursor-pointer gap-3">
+    <div className="relative">
+      <input
+        type="checkbox"
+        id="hasFamily"
+        {...register('financial.hasFamily')}
+        className="sr-only peer"
+      />
+      <div className="w-10 h-5 bg-gray-300 rounded-full peer-checked:bg-emerald-500 transition-all duration-300"></div>
+      <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-md transform peer-checked:translate-x-5 transition-all duration-300"></div>
+    </div>
+    <span className="text-gray-700 text-sm">
+      Tengo familia directa (padres, cónyuge, hijos) en mi país
+    </span>
+  </label>
 
-          <div className="flex items-center gap-3">
-            <input
-              type="checkbox"
-              id="hasReturnTicket"
-              {...register('financial.hasReturnTicket')}
-              className="w-4 h-4 text-emerald-600 bg-white border-gray-300 rounded focus:ring-emerald-500"
-            />
-            <label htmlFor="hasReturnTicket" className="text-gray-700">
-              Tengo o compraré boleto de regreso
-            </label>
-          </div>
-        </div>
+  <label htmlFor="hasReturnTicket" className="flex items-center cursor-pointer gap-3">
+    <div className="relative">
+      <input
+        type="checkbox"
+        id="hasReturnTicket"
+        {...register('financial.hasReturnTicket')}
+        className="sr-only peer"
+      />
+      <div className="w-10 h-5 bg-gray-300 rounded-full peer-checked:bg-emerald-500 transition-all duration-300"></div>
+      <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-md transform peer-checked:translate-x-5 transition-all duration-300"></div>
+    </div>
+    <span className="text-gray-700 text-sm">
+      Tengo o compraré boleto de regreso
+    </span>
+  </label>
+</div>
+
       </div>
 
       <div className="bg-blue-50 p-4 rounded-lg">
