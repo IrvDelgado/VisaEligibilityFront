@@ -167,41 +167,45 @@ export default function ResultSection({ result }) {
 
             {/* Visa Content */}
             <div className="p-6 space-y-6">
-              {/* Requirements */}
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
-                  <svg className="w-5 h-5 mr-2 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-                  </svg>
-                  Evaluación de Requisitos
-                </h4>
-                <div className="grid gap-3">
-                  {visa.requirements.map((req) => (
-                    <div key={req.key} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                      <div className="flex items-center space-x-3">
-                        <span className="text-lg">{getRequirementIcon(req.achieved)}</span>
-                        <div>
-                          <div className="font-medium text-gray-800">
-                            {getRequirementLabel(req.key)}
-                          </div>
-                          <div className="text-sm text-gray-600">
-                            Importancia: {Math.round(req.weight * 100)}%
-                          </div>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div className="font-bold text-lg">{req.achieved}%</div>
-                        <div className="w-16 bg-gray-200 rounded-full h-2">
-                          <div 
-                            className={`h-2 rounded-full ${getProgressBarColor(req.achieved)}`}
-                            style={{ width: `${req.achieved}%` }}
-                          ></div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+{/* Requirements */}
+<div>
+  <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
+    <svg className="w-5 h-5 mr-2 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+      <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+    </svg>
+    Evaluación de Requisitos
+  </h4>
+
+  <div className="overflow-x-auto">
+    <div className="min-w-[500px] grid gap-3">
+      {visa.requirements.map((req) => (
+        <div key={req.key} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+          <div className="flex items-center space-x-3">
+            <span className="text-lg">{getRequirementIcon(req.achieved)}</span>
+            <div>
+              <div className="font-medium text-gray-800">
+                {getRequirementLabel(req.key)}
               </div>
+              <div className="text-sm text-gray-600">
+                Importancia: {Math.round(req.weight * 100)}%
+              </div>
+            </div>
+          </div>
+          <div className="text-right">
+            <div className="font-bold text-lg">{req.achieved}%</div>
+            <div className="w-16 bg-gray-200 rounded-full h-2">
+              <div 
+                className={`h-2 rounded-full ${getProgressBarColor(req.achieved)}`}
+                style={{ width: `${req.achieved}%` }}
+              ></div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
 
               {/* Next Steps */}
               <div>
