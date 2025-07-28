@@ -81,17 +81,26 @@ export default function EducationStep() {
               </svg>
             </Tooltip>
           </label>
-          <div className="flex items-center gap-3 mb-3">
-            <input
-              type="checkbox"
-              id="hasEnglishCertification"
-              {...register('education.hasEnglishCertification')}
-              className="w-4 h-4 text-emerald-600 bg-white border-gray-300 rounded focus:ring-emerald-500"
-            />
-            <label htmlFor="hasEnglishCertification" className="text-gray-700">
-              Tengo certificación oficial
-            </label>
-          </div>
+
+<div className="flex items-center gap-3 mb-3">
+  <label
+    htmlFor="hasEnglishCertification"
+    className="flex items-center cursor-pointer gap-3"
+  >
+    <div className="relative">
+      <input
+        type="checkbox"
+        id="hasEnglishCertification"
+        {...register('education.hasEnglishCertification')}
+        className="sr-only peer"
+      />
+      <div className="w-10 h-5 bg-gray-300 rounded-full peer-checked:bg-emerald-500 transition-all duration-300"></div>
+      <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-md transform peer-checked:translate-x-5 transition-all duration-300"></div>
+    </div>
+    <span className="text-gray-700 text-sm">Tengo certificación oficial</span>
+  </label>
+</div>
+
           
           {hasEnglishCertification && (
             <div>

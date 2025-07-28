@@ -65,17 +65,28 @@ export default function EmploymentStep() {
             </svg>
           </Tooltip>
         </label>
-        <div className="flex items-center gap-3">
-          <input
-            type="checkbox"
-            id="hasJobOffer"
-            {...register('employment.hasJobOffer')}
-            className="w-4 h-4 text-emerald-600 bg-white border-gray-300 rounded focus:ring-emerald-500"
-          />
-          <label htmlFor="hasJobOffer" className="text-gray-700">
-            Tengo una oferta laboral en el país de destino
-          </label>
-        </div>
+
+<div className="flex items-center gap-3 mb-3">
+  <label
+    htmlFor="hasJobOffer"
+    className="flex items-center cursor-pointer gap-3"
+  >
+    <div className="relative">
+      <input
+        type="checkbox"
+        id="hasJobOffer"
+        {...register('employment.hasJobOffer')}
+        className="sr-only peer"
+      />
+      <div className="w-10 h-5 bg-gray-300 rounded-full peer-checked:bg-emerald-500 transition-all duration-300"></div>
+      <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-md transform peer-checked:translate-x-5 transition-all duration-300"></div>
+    </div>
+    <span className="text-gray-700 text-sm">Tengo una oferta laboral en el país de destino</span>
+  </label>
+</div>
+
+
+
         {hasJobOffer && (
           <div className="mt-3 p-3 bg-green-50 rounded-lg">
             <p className="text-sm text-green-800">
@@ -187,18 +198,26 @@ export default function EmploymentStep() {
         )}
         <p className="mt-1 text-sm text-gray-500">Salarios más altos mejoran las posibilidades de aprobación</p>
       </div>
-
-      <div className="flex items-center gap-3">
-        <input
-          type="checkbox"
-          id="seasonal"
-          {...register('employment.seasonal')}
-          className="w-4 h-4 text-emerald-600 bg-white border-gray-300 rounded focus:ring-emerald-500"
-        />
-        <label htmlFor="seasonal" className="text-gray-700">
-          Es trabajo estacional (temporal)
+            
+      <div className="flex items-center gap-3 mb-3">
+        <label
+          htmlFor="seasonal"
+          className="flex items-center cursor-pointer gap-3"
+        >
+          <div className="relative">
+            <input
+              type="checkbox"
+              id="seasonal"
+              {...register('employment.seasonal')}
+              className="sr-only peer"
+            />
+            <div className="w-10 h-5 bg-gray-300 rounded-full peer-checked:bg-emerald-500 transition-all duration-300"></div>
+            <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-md transform peer-checked:translate-x-5 transition-all duration-300"></div>
+          </div>
+          <span className="text-gray-700 text-sm">Es trabajo estacional (temporal)</span>
         </label>
       </div>
+
 
       <div className="bg-yellow-50 p-4 rounded-lg">
         <div className="flex items-start gap-3">
