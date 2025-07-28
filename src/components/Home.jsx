@@ -284,6 +284,43 @@ export default function Home() {
           <AdBox position="Sidebar Right Bottom" />
         </aside>
       </main>
+<section className="max-w-7xl mx-auto px-6 py-16">
+  <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">Explora nuestras Guías</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    
+    <a href="/tipos-de-visas" className="block bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all p-6 text-center">
+      <div className="w-12 h-12 mx-auto mb-4 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m0-4a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h3 className="text-lg font-semibold text-gray-800 mb-2">Tipos de Visa</h3>
+      <p className="text-sm text-gray-600">Conoce las visas más comunes y cuál se adapta mejor a tu situación.</p>
+    </a>
+
+    <a href="/documentacion-recomendada" className="block bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all p-6 text-center">
+      <div className="w-12 h-12 mx-auto mb-4 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h3 className="text-lg font-semibold text-gray-800 mb-2">Documentación Recomendada</h3>
+      <p className="text-sm text-gray-600">Prepara tus papeles correctamente antes de aplicar o asistir a tu entrevista.</p>
+    </a>
+
+    <a href="/consejos-entrevista" className="block bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all p-6 text-center">
+      <div className="w-12 h-12 mx-auto mb-4 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553 2.276a1 1 0 010 1.448L15 16v2a1 1 0 01-1.447.894L8 17V7l5.553-2.776A1 1 0 0115 5v2l4.553 2.276a1 1 0 010 1.448L15 12v2z" />
+        </svg>
+      </div>
+      <h3 className="text-lg font-semibold text-gray-800 mb-2">Consejos para la Entrevista</h3>
+      <p className="text-sm text-gray-600">Lo que debes (y no debes) hacer en tu cita consular. Tips de oro.</p>
+    </a>
+
+  </div>
+</section>
+
 
       {/* Bottom sticky ad for maximum visibility */}
       <div className="max-w-7xl mx-auto px-6 py-4">

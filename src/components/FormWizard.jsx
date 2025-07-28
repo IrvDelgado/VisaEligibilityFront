@@ -237,7 +237,7 @@ export default function FormWizard({ onSubmit, loading }) {
 
           <StepComponent />
 
-          <div className="flex justify-between pt-8 border-t border-gray-200 mt-8">
+          <div className="flex flex-col gap-4 md:flex-row md:justify-between pt-8 border-t border-gray-200 mt-8">
             <button
               type="button"
               onClick={handlePrevious}
