@@ -114,32 +114,27 @@ export default function PersonalInfoStep() {
         )}
       </div>
 
-<div className="flex flex-wrap gap-6 items-start">
-  <label className="inline-flex items-start gap-2 text-sm text-gray-800 w-fit max-w-xs">
+
+<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start">
+  <label className="inline-flex items-center gap-2 text-sm text-gray-800">
     <input
       type="checkbox"
       {...register('personalInfo.priorUSExperience')}
-      className="mt-1 w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
+      className="w-4 h-4 accent-emerald-600"
     />
-    <span className="leading-snug">
-      He visitado Estados Unidos antes
-    </span>
+    <span className="leading-snug">He visitado Estados Unidos antes</span>
   </label>
 
-  <label className="inline-flex items-start gap-2 text-sm text-gray-800 w-fit max-w-xs">
+  <label className="inline-flex items-center gap-2 text-sm text-gray-800">
     <input
       type="checkbox"
       {...register('personalInfo.previousVisaRecord')}
-      className="mt-1 w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
+      className="w-4 h-4 accent-emerald-600"
     />
-    <span className="leading-snug">
-      He tenido visas estadounidenses anteriormente
-    </span>
+    <span className="leading-snug">He tenido visas estadounidenses anteriormente</span>
   </label>
 </div>
-
-
-
+ 
 
 
       <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
