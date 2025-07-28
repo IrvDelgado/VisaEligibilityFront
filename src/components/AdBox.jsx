@@ -14,7 +14,7 @@ export default function AdBox({ position }) {
       </div>
       <div className="bg-white bg-opacity-60 border border-emerald-100 rounded-lg p-3 text-emerald-600 text-sm">
         <p>Espacio reservado para Google Ads</p>
-        <p className="text-xs mt-1 italic text-emerald-500">visa-pathway.com</p>
+        <p className="text-xs mt-1 italic text-emerald-500">Pronostika.top</p>
       </div>
     </div>
   )

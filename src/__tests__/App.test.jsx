@@ -136,7 +136,7 @@ describe('App Component', () => {
   it('has proper footer content', () => {
     render(<App />)
     
-    expect(screen.getByText('© 2025 VisaPathway. Tu puerta hacia el sueño americano.')).toBeInTheDocument()
+    expect(screen.getByText('© 2025 Pronostika. Tu puerta hacia el sueño americano.')).toBeInTheDocument()
     expect(screen.getByText('Powered by')).toBeInTheDocument()
     expect(screen.getByText('DS Technology')).toBeInTheDocument()
   })

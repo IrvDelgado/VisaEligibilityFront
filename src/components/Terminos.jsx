@@ -8,7 +8,7 @@ export default function Terminos() {
 
         <section className="space-y-4 text-gray-700 text-base leading-relaxed">
           <p>
-            <strong>VisaPathway</strong> es una herramienta con fines informativos y educativos que ayuda a estimar la elegibilidad para visas
+            <strong>Pronostika visa checker</strong> es una herramienta con fines informativos y educativos que ayuda a estimar la elegibilidad para visas
             estadounidenses. No garantizamos resultados ni somos un servicio oficial del gobierno de EE.UU.
           </p>
 
