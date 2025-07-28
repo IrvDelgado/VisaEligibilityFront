@@ -107,20 +107,21 @@ export default function Home() {
             </div>
 
             
-            {/* Title */}
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-emerald-100 bg-clip-text text-transparent">
-              VisaPathway
-            </h1>
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="h-1 w-12 bg-gradient-to-r from-emerald-300 to-cyan-300 rounded-full"></div>
-              <div className="h-1 w-6 bg-emerald-200 rounded-full"></div>
-              <div className="h-1 w-12 bg-gradient-to-r from-cyan-300 to-emerald-300 rounded-full"></div>
-            </div>
-            
-            {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-emerald-50 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Tu puerta hacia el sueño americano. Descubre tu elegibilidad para visas estadounidenses con inteligencia artificial.
-            </p>
+{/* Title */}
+<h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-emerald-100 bg-clip-text text-transparent">
+  Pronostika Visa Checker
+</h1>
+<div className="flex items-center justify-center gap-2 mb-6">
+  <div className="h-1 w-12 bg-gradient-to-r from-emerald-300 to-cyan-300 rounded-full"></div>
+  <div className="h-1 w-6 bg-emerald-200 rounded-full"></div>
+  <div className="h-1 w-12 bg-gradient-to-r from-cyan-300 to-emerald-300 rounded-full"></div>
+</div>
+
+{/* Subtitle */}
+<p className="text-xl md:text-2xl text-emerald-50 mb-8 max-w-3xl mx-auto leading-relaxed">
+  Evalúa tu elegibilidad para visas estadounidenses en segundos. Pronostika te guía con inteligencia artificial hacia el camino correcto.
+</p>
+
             
             {/* Features */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -338,7 +339,7 @@ export default function Home() {
               </div>
               <span className="font-semibold text-gray-800">VisaPathway</span>
             </div>
-            <p className="text-sm">© 2025 VisaPathway. Tu puerta hacia el sueño americano.</p>
+            <p className="text-sm">© 2025 Pronostika. Tu puerta hacia el sueño americano.</p>
             <div className="flex items-center gap-1 text-xs text-gray-500">
               <span>Powered by</span>
               <span className="text-emerald-600 font-semibold">DS Technology</span>
@@ -367,7 +368,7 @@ export default function Home() {
                 <div className="text-xs text-gray-600 leading-relaxed">
                   <p className="font-semibold mb-1">Aviso Legal Importante:</p>
                   <p className="mb-2">
-                    <strong>VisaPathway es una herramienta informativa y educativa.</strong> No almacenamos, vendemos ni compartimos tus datos personales. 
+                    <strong>Pronostika visa checker es una herramienta informativa y educativa.</strong> No almacenamos, vendemos ni compartimos tus datos personales. 
                     Esta evaluación no garantiza la aprobación de ninguna visa y no sustituye el asesoramiento legal profesional. 
                   </p>
                   <p>
