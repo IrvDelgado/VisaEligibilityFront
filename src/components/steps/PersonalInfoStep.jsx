@@ -114,25 +114,34 @@ export default function PersonalInfoStep() {
         )}
       </div>
 
-<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start">
-  <label className="flex items-center text-sm text-gray-800">
+
+ <div className="flex items-center justify-between">
+  <span className="text-sm text-gray-700">¿Has visitado Estados Unidos antes?</span>
+  <label className="relative inline-flex items-center cursor-pointer">
     <input
       type="checkbox"
       {...register('personalInfo.priorUSExperience')}
-      className="w-4 h-4 accent-emerald-600"
+      className="sr-only peer"
     />
-    <span className="ml-1">He visitado Estados Unidos antes</span>
+    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-emerald-500 rounded-full peer peer-checked:bg-emerald-500 transition-all"></div>
+    <div className="absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition-transform peer-checked:translate-x-full"></div>
   </label>
+</div>
 
-  <label className="flex items-center text-sm text-gray-800">
+<div className="flex items-center justify-between mt-4">
+  <span className="text-sm text-gray-700">¿Has tenido visas estadounidenses anteriormente?</span>
+  <label className="relative inline-flex items-center cursor-pointer">
     <input
       type="checkbox"
       {...register('personalInfo.previousVisaRecord')}
-      className="w-4 h-4 accent-emerald-600"
+      className="sr-only peer"
     />
-    <span className="ml-1">He tenido visas estadounidenses anteriormente</span>
+    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-emerald-500 rounded-full peer peer-checked:bg-emerald-500 transition-all"></div>
+    <div className="absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition-transform peer-checked:translate-x-full"></div>
   </label>
 </div>
+
+
 
 
 
